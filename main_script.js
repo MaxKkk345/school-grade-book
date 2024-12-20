@@ -1,4 +1,4 @@
-// Функция для отображения нужной вкладки
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї Г­ГіГ¦Г­Г®Г© ГўГЄГ«Г Г¤ГЄГЁ
 function showTab(tabId) {
     const tabs = document.querySelectorAll('.tab-content');
 
@@ -12,28 +12,28 @@ function showTab(tabId) {
     if (selectedTab !== null) {
         selectedTab.classList.add('active');
     } else {
-        console.log('Вкладка с id "' + tabId + '" не найдена.');
+        console.log('Г‚ГЄГ«Г Г¤ГЄГ  Г± id "' + tabId + '" Г­ГҐ Г­Г Г©Г¤ГҐГ­Г .');
     }
 
 }
 
 
-// Функция для обновления текста с именем файла
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГї ГІГҐГЄГ±ГІГ  Г± ГЁГ¬ГҐГ­ГҐГ¬ ГґГ Г©Г«Г 
 function updateFileName() {
     const fileInput = document.getElementById('file-upload');
     const fileNameText = document.getElementById('file-name');
 
-    // Если выбран файл, то меняем его название
+    // Г…Г±Г«ГЁ ГўГ»ГЎГ°Г Г­ ГґГ Г©Г«, ГІГ® Г¬ГҐГ­ГїГҐГ¬ ГҐГЈГ® Г­Г Г§ГўГ Г­ГЁГҐ
     if (fileInput.files.length > 0) { 
         const fileName = fileInput.files[0].name;
         fileNameText.textContent = fileName; 
     } else {
-        fileNameText.textContent = 'Файл не выбран';
+        fileNameText.textContent = 'Г”Г Г©Г« Г­ГҐ ГўГ»ГЎГ°Г Г­';
     }
 }
 
 
-// Функция загрузки файла
+// Г”ГіГ­ГЄГ¶ГЁГї Г§Г ГЈГ°ГіГ§ГЄГЁ ГґГ Г©Г«Г 
 function uploadFile() {
     const fileInput = document.getElementById('file-upload');
 
@@ -53,7 +53,7 @@ function uploadFile() {
             for (let i = 1; i < rows.length; i++) {
                 const row = rows[i].trim();
 
-                /*Строка не пустая*/
+                /*Г‘ГІГ°Г®ГЄГ  Г­ГҐ ГЇГіГ±ГІГ Гї*/
                 if (row) {
                     const columns = row.split(';');
 
@@ -68,11 +68,11 @@ function uploadFile() {
 
         reader.readAsText(file, 'windows-1251');
     } else {
-        alert("Пожалуйста, выберите файл!");
+        alert("ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ , ГўГ»ГЎГҐГ°ГЁГІГҐ ГґГ Г©Г«!");
     }
 }
 
-// Создание строки для таблицы file-preview
+// Г‘Г®Г§Г¤Г Г­ГЁГҐ Г±ГІГ°Г®ГЄГЁ Г¤Г«Гї ГІГ ГЎГ«ГЁГ¶Г» file-preview
 function createPreviewRow(columns) {
     const row = document.createElement('tr');
 
@@ -85,7 +85,7 @@ function createPreviewRow(columns) {
     return row;
 }
 
-// Создание редактируемой строки для таблицы file-add
+// Г‘Г®Г§Г¤Г Г­ГЁГҐ Г°ГҐГ¤Г ГЄГІГЁГ°ГіГҐГ¬Г®Г© Г±ГІГ°Г®ГЄГЁ Г¤Г«Гї ГІГ ГЎГ«ГЁГ¶Г» file-add
 function createEditableRow(columns) {
     const row = document.createElement('tr');
     columns.forEach((column, index) => {
@@ -95,10 +95,10 @@ function createEditableRow(columns) {
         input.type = 'text';
         input.value = column.trim();
 
-        // Только для предметов (index=2)
+        // Г’Г®Г«ГјГЄГ® Г¤Г«Гї ГЇГ°ГҐГ¤Г¬ГҐГІГ®Гў (index=2)
         if (index >= 2) { 
             input.addEventListener('input', () => {
-                // Разрешаем ввод только цифр от 1 до 5
+                // ГђГ Г§Г°ГҐГёГ ГҐГ¬ ГўГўГ®Г¤ ГІГ®Г«ГјГЄГ® Г¶ГЁГґГ° Г®ГІ 1 Г¤Г® 5
                 input.value = input.value.replace(/[^1-5]/g, '');
                 if (input.value > 5) input.value = 5;
                 if (input.value < 1 && input.value !== '') input.value = 1;
@@ -109,17 +109,17 @@ function createEditableRow(columns) {
         row.appendChild(cell);
     });
 
-    // Создаем ячейку для кнопки "удалить"
+    // Г‘Г®Г§Г¤Г ГҐГ¬ ГїГ·ГҐГ©ГЄГі Г¤Г«Гї ГЄГ­Г®ГЇГЄГЁ "ГіГ¤Г Г«ГЁГІГј"
     const deleteCell = document.createElement('td');
     const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Х'; // 
+    deleteButton.textContent = 'Г•'; // 
     deleteButton.classList.add('delete-button'); 
     deleteButton.addEventListener('click', () => {
         const addTableBody = document.querySelector('#file-add tbody');
         if (addTableBody.children.length > 1) {
             row.remove(); 
         } else {
-            alert('Нельзя удалить последнюю строку!');
+            alert('ГЌГҐГ«ГјГ§Гї ГіГ¤Г Г«ГЁГІГј ГЇГ®Г±Г«ГҐГ¤Г­ГѕГѕ Г±ГІГ°Г®ГЄГі!');
         }
     });
     deleteCell.appendChild(deleteButton);
@@ -128,7 +128,7 @@ function createEditableRow(columns) {
     return row;
 }
 
-// Добавление новой строки в таблицу file-add
+// Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ Г­Г®ГўГ®Г© Г±ГІГ°Г®ГЄГЁ Гў ГІГ ГЎГ«ГЁГ¶Гі file-add
 function addNewRow() {
     const addTableBody = document.querySelector('#file-add tbody');
     const columnsCount = document.querySelector('#file-add thead tr').children.length;
@@ -139,10 +139,10 @@ function addNewRow() {
         const input = document.createElement('input');
         input.type = 'text';
 
-        // Проверяем, является ли текущая колонка предметом
-        if (i >= 2) { // Начиная с колонки "Информатика"
+        // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬, ГїГўГ«ГїГҐГІГ±Гї Г«ГЁ ГІГҐГЄГіГ№Г Гї ГЄГ®Г«Г®Г­ГЄГ  ГЇГ°ГҐГ¤Г¬ГҐГІГ®Г¬
+        if (i >= 2) { // ГЌГ Г·ГЁГ­Г Гї Г± ГЄГ®Г«Г®Г­ГЄГЁ "Г€Г­ГґГ®Г°Г¬Г ГІГЁГЄГ "
             input.addEventListener('input', () => {
-                // Разрешаем ввод только цифр от 1 до 5
+                // ГђГ Г§Г°ГҐГёГ ГҐГ¬ ГўГўГ®Г¤ ГІГ®Г«ГјГЄГ® Г¶ГЁГґГ° Г®ГІ 1 Г¤Г® 5
                 input.value = input.value.replace(/[^1-5]/g, '');
                 if (input.value > 5) input.value = 5;
                 if (input.value < 1 && input.value !== '') input.value = 1;
@@ -153,15 +153,15 @@ function addNewRow() {
         newRow.appendChild(cell);
     }
 
-    // Добавляем кнопку "Удалить" справа от строки
+    // Г„Г®ГЎГ ГўГ«ГїГҐГ¬ ГЄГ­Г®ГЇГЄГі "Г“Г¤Г Г«ГЁГІГј" Г±ГЇГ°Г ГўГ  Г®ГІ Г±ГІГ°Г®ГЄГЁ
     const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Х';
+    deleteButton.textContent = 'РҐ';
     deleteButton.classList.add('delete-button');
     deleteButton.addEventListener('click', () => {
         if (addTableBody.children.length > 1) {
             newRow.remove();
         } else {
-            alert('Нельзя удалить последнюю строку!');
+            alert('ГЌГҐГ«ГјГ§Гї ГіГ¤Г Г«ГЁГІГј ГЇГ®Г±Г«ГҐГ¤Г­ГѕГѕ Г±ГІГ°Г®ГЄГі!');
         }
     });
 
@@ -172,22 +172,22 @@ function addNewRow() {
     addTableBody.appendChild(newRow);
 }
 
-// Связываем кнопку с функцией
+// Г‘ГўГїГ§Г»ГўГ ГҐГ¬ ГЄГ­Г®ГЇГЄГі Г± ГґГіГ­ГЄГ¶ГЁГҐГ©
 document.getElementById('add-row-button').addEventListener('click', addNewRow);
 
 
 
-// Функция для скачивания таблицы
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г±ГЄГ Г·ГЁГўГ Г­ГЁГї ГІГ ГЎГ«ГЁГ¶Г»
 function downloadTable() {
     const addTableBody = document.querySelector('#file-add tbody');
     const rows = Array.from(addTableBody.querySelectorAll('tr'));
         
-    const headerRow = ['ФИО', 'Класс', 'Информатика', 'Физика', 'Математика', 'Литература', 'Музыка'];
+    const headerRow = ['Г”Г€ГЋ', 'ГЉГ«Г Г±Г±', 'Г€Г­ГґГ®Г°Г¬Г ГІГЁГЄГ ', 'Г”ГЁГ§ГЁГЄГ ', 'ГЊГ ГІГҐГ¬Г ГІГЁГЄГ ', 'Г‹ГЁГІГҐГ°Г ГІГіГ°Г ', 'ГЊГіГ§Г»ГЄГ '];
 
     const csvContent = [];
     csvContent.push(headerRow.join(';'));
 
-    // Проходим по всем строкам таблицы, очищаем от пробелов в конце и начале
+    // ГЏГ°Г®ГµГ®Г¤ГЁГ¬ ГЇГ® ГўГ±ГҐГ¬ Г±ГІГ°Г®ГЄГ Г¬ ГІГ ГЎГ«ГЁГ¶Г», Г®Г·ГЁГ№Г ГҐГ¬ Г®ГІ ГЇГ°Г®ГЎГҐГ«Г®Гў Гў ГЄГ®Г­Г¶ГҐ ГЁ Г­Г Г·Г Г«ГҐ
     rows.forEach(row => {
         const inputs = Array.from(row.querySelectorAll('input'));
         const rowData = inputs.map(input => input.value.trim());
@@ -197,15 +197,15 @@ function downloadTable() {
     const csvString = csvContent.join('\n');
 
     
-    const bom = '\uFEFF'; // BOM для UTF-8
+    const bom = '\uFEFF'; // BOM Г¤Г«Гї UTF-8
     const csvWithBom = bom + csvString; 
 
     const csvBlob = new Blob([csvWithBom], { type: 'text/csv;charset=utf-8;' });
 
-    // Создаем ссылку и инициируем скачивание
+    // Г‘Г®Г§Г¤Г ГҐГ¬ Г±Г±Г»Г«ГЄГі ГЁ ГЁГ­ГЁГ¶ГЁГЁГ°ГіГҐГ¬ Г±ГЄГ Г·ГЁГўГ Г­ГЁГҐ
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(csvBlob);
-    downloadLink.download = 'Новый журнал.csv';
+    downloadLink.download = 'ГЌГ®ГўГ»Г© Г¦ГіГ°Г­Г Г«.csv';
     downloadLink.click(); 
 }
 
@@ -216,7 +216,7 @@ document.getElementById('add-row-button').addEventListener('click', addNewRow);
 addNewRow();
 
 
-// Функция для получения статистики из таблицы file-add
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГЇГ®Г«ГіГ·ГҐГ­ГЁГї Г±ГІГ ГІГЁГ±ГІГЁГЄГЁ ГЁГ§ ГІГ ГЎГ«ГЁГ¶Г» file-add
 function collectTableData(subjectIndex) {
     const tableAdd = document.querySelector('#file-add tbody');
     const rows = Array.from(tableAdd.querySelectorAll('tr'));
@@ -227,16 +227,16 @@ function collectTableData(subjectIndex) {
     rows.forEach(row => {
         const cells = row.querySelectorAll('td input');
         if (cells.length > subjectIndex) {
-            const className = cells[1].value.trim(); // Класс находится в колонке 2
+            const className = cells[1].value.trim(); // ГЉГ«Г Г±Г± Г­Г ГµГ®Г¤ГЁГІГ±Гї Гў ГЄГ®Г«Г®Г­ГЄГҐ 2
             const score = parseInt(cells[subjectIndex].value.trim(), 10); 
             if (!isNaN(score)) {
-                // Сохраняем оценки по классам. Добавляем неповторяющиеся ключи
+                // Г‘Г®ГµГ°Г Г­ГїГҐГ¬ Г®Г¶ГҐГ­ГЄГЁ ГЇГ® ГЄГ«Г Г±Г±Г Г¬. Г„Г®ГЎГ ГўГ«ГїГҐГ¬ Г­ГҐГЇГ®ГўГІГ®Г°ГїГѕГ№ГЁГҐГ±Гї ГЄГ«ГѕГ·ГЁ
                 if (!classStats[className]) {
                     classStats[className] = [];
                 }
                 classStats[className].push(score);
 
-                // Сохраняем общие оценки
+                // Г‘Г®ГµГ°Г Г­ГїГҐГ¬ Г®ГЎГ№ГЁГҐ Г®Г¶ГҐГ­ГЄГЁ
                 allScores.push(score);
             }
         }
@@ -245,7 +245,7 @@ function collectTableData(subjectIndex) {
     return { classStats, allScores };
 }
 
-// Функция для расчета средней оценки
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г°Г Г±Г·ГҐГІГ  Г±Г°ГҐГ¤Г­ГҐГ© Г®Г¶ГҐГ­ГЄГЁ
 function calculateAverage(scores) {
 
     if (scores.length === 0) {
@@ -263,14 +263,14 @@ function calculateAverage(scores) {
 }
 
 
-// Функция для расчета медианы
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г°Г Г±Г·ГҐГІГ  Г¬ГҐГ¤ГЁГ Г­Г»
 function calculateMedian(scores) {
 
     if (scores.length === 0) {
         return 0;
     }
 
-    // Сортируем массив чисел по возрастанию
+    // Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ Г¬Г Г±Г±ГЁГў Г·ГЁГ±ГҐГ« ГЇГ® ГўГ®Г§Г°Г Г±ГІГ Г­ГЁГѕ
     let sorted = [];
     for (let i = 0; i < scores.length; i++) {
         sorted.push(scores[i]);
@@ -281,11 +281,11 @@ function calculateMedian(scores) {
 
     const mid = Math.floor(sorted.length / 2);
 
-    // Если количество элементов нечетное, возвращаем элемент в середине
+    // Г…Г±Г«ГЁ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г­ГҐГ·ГҐГІГ­Г®ГҐ, ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІ Гў Г±ГҐГ°ГҐГ¤ГЁГ­ГҐ
     if (sorted.length % 2 !== 0) {
         return sorted[mid];
     } else {
-        // Если количество элементов четное, возвращаем среднее из двух центральных элементов
+        // Г…Г±Г«ГЁ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г·ГҐГІГ­Г®ГҐ, ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ Г±Г°ГҐГ¤Г­ГҐГҐ ГЁГ§ Г¤ГўГіГµ Г¶ГҐГ­ГІГ°Г Г«ГјГ­Г»Гµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
         const middleLeft = sorted[mid - 1];
         const middleRight = sorted[mid];
         return (middleLeft + middleRight) / 2;
@@ -293,7 +293,7 @@ function calculateMedian(scores) {
 }
 
 
-// Функция для подсчета количества оценок
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГЇГ®Г¤Г±Г·ГҐГІГ  ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ  Г®Г¶ГҐГ­Г®ГЄ
 function countScores(scores, value) {
     let count = 0;
 
@@ -308,7 +308,7 @@ function countScores(scores, value) {
 }
 
 
-// Функция для заполнения таблицы статистики классов
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГї ГІГ ГЎГ«ГЁГ¶Г» Г±ГІГ ГІГЁГ±ГІГЁГЄГЁ ГЄГ«Г Г±Г±Г®Гў
 function updateClassStatsTable(classStats) {
     const tableBody = document.querySelector('#table_stats_classes tbody');
 
@@ -343,7 +343,7 @@ function updateClassStatsTable(classStats) {
 
 }
 
-// Функция для заполнения таблицы общей статистики
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГї ГІГ ГЎГ«ГЁГ¶Г» Г®ГЎГ№ГҐГ© Г±ГІГ ГІГЁГ±ГІГЁГЄГЁ
 function updateAllStatsTable(allScores) {
     const tableBody = document.querySelector('#table_stats_all tbody');
     tableBody.innerHTML = '';
@@ -368,7 +368,7 @@ function updateAllStatsTable(allScores) {
     tableBody.appendChild(row);
 }
 
-// Связывание выпадающего списка с функцией обновления таблицы
+// Г‘ГўГїГ§Г»ГўГ Г­ГЁГҐ ГўГ»ГЇГ Г¤Г ГѕГ№ГҐГЈГ® Г±ГЇГЁГ±ГЄГ  Г± ГґГіГ­ГЄГ¶ГЁГҐГ© Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГї ГІГ ГЎГ«ГЁГ¶Г»
 function handleSubjectChange() {
     const selectElement = document.querySelector('#table-stats-select');
     const subject = selectElement.value;
@@ -387,11 +387,11 @@ function handleSubjectChange() {
         updateClassStatsTable(classStats);
         updateAllStatsTable(allScores);
     } else {
-        console.error('Неверный предмет:', subject);
+        console.error('ГЌГҐГўГҐГ°Г­Г»Г© ГЇГ°ГҐГ¤Г¬ГҐГІ:', subject);
     }
 }
 
-// Привязываем событие изменения к выпадающему списку
+// ГЏГ°ГЁГўГїГ§Г»ГўГ ГҐГ¬ Г±Г®ГЎГ»ГІГЁГҐ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї ГЄ ГўГ»ГЇГ Г¤Г ГѕГ№ГҐГ¬Гі Г±ГЇГЁГ±ГЄГі
 const subjectSelect = document.querySelector('#table-stats-select');
 subjectSelect.addEventListener('change', handleSubjectChange);
 
@@ -399,7 +399,7 @@ subjectSelect.addEventListener('change', handleSubjectChange);
 
 
 
-// Подключение Chart.js и обновление графической статистики
+// ГЏГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ Chart.js ГЁ Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ ГЈГ°Г ГґГЁГ·ГҐГ±ГЄГ®Г© Г±ГІГ ГІГЁГ±ГІГЁГЄГЁ
 let classStatsChart;
 let medianStatsChart;
 let countStatsCharts = [];
@@ -408,13 +408,13 @@ let allStatsChart;
 function updateGraphicStats(subjectIndex) {
     const { classStats, allScores } = collectTableData(subjectIndex);
 
-    // Обновляем график средней оценки по классам
+    // ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ ГЈГ°Г ГґГЁГЄ Г±Г°ГҐГ¤Г­ГҐГ© Г®Г¶ГҐГ­ГЄГЁ ГЇГ® ГЄГ«Г Г±Г±Г Г¬
     const classLabels = Object.keys(classStats);
     const classAverages = classLabels.map(label => calculateAverage(classStats[label]));
 
     const ctxClass = document.getElementById('class-stats-chart').getContext('2d');
 
-    //Удаляем существующий график
+    //Г“Г¤Г Г«ГїГҐГ¬ Г±ГіГ№ГҐГ±ГІГўГіГѕГ№ГЁГ© ГЈГ°Г ГґГЁГЄ
     if (classStatsChart) {
         classStatsChart.destroy();
     }
@@ -423,7 +423,7 @@ function updateGraphicStats(subjectIndex) {
         data: {
             labels: classLabels,
             datasets: [{
-                label: 'Средняя оценка по классам',
+                label: 'Г‘Г°ГҐГ¤Г­ГїГї Г®Г¶ГҐГ­ГЄГ  ГЇГ® ГЄГ«Г Г±Г±Г Г¬',
                 data: classAverages,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -449,7 +449,7 @@ function updateGraphicStats(subjectIndex) {
         }
     });
 
-    // Обновляем график медиан по классам
+    // ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ ГЈГ°Г ГґГЁГЄ Г¬ГҐГ¤ГЁГ Г­ ГЇГ® ГЄГ«Г Г±Г±Г Г¬
     const classMedians = classLabels.map(label => calculateMedian(classStats[label]));
 
     const ctxMedian = document.getElementById('median-stats-chart').getContext('2d');
@@ -461,7 +461,7 @@ function updateGraphicStats(subjectIndex) {
         data: {
             labels: classLabels,
             datasets: [{
-                label: 'Медиана по классам',
+                label: 'ГЊГҐГ¤ГЁГ Г­Г  ГЇГ® ГЄГ«Г Г±Г±Г Г¬',
                 data: classMedians,
                 backgroundColor: 'rgba(153, 102, 255, 0.2)',
                 borderColor: 'rgba(153, 102, 255, 1)',
@@ -486,7 +486,7 @@ function updateGraphicStats(subjectIndex) {
         }
     });
 
-    // Обновляем графики количества оценок по классам (5, 4, 3, 2)
+    // ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ ГЈГ°Г ГґГЁГЄГЁ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ  Г®Г¶ГҐГ­Г®ГЄ ГЇГ® ГЄГ«Г Г±Г±Г Г¬ (5, 4, 3, 2)
     const grades = [5, 4, 3, 2];
     const ctxCountElements = ['count-stats-chart-5', 'count-stats-chart-4', 'count-stats-chart-3', 'count-stats-chart-2']
         .map(id => document.getElementById(id).getContext('2d'));
@@ -500,7 +500,7 @@ function updateGraphicStats(subjectIndex) {
             data: {
                 labels: classLabels,
                 datasets: [{
-                    label: `Количество оценок ${grade} по классам`,
+                    label: `ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г®Г¶ГҐГ­Г®ГЄ ${grade} ГЇГ® ГЄГ«Г Г±Г±Г Г¬`,
                     data: counts,
                     backgroundColor: 'rgba(255, 159, 64, 0.2)',
                     borderColor: 'rgba(255, 159, 64, 1)',
@@ -526,7 +526,7 @@ function updateGraphicStats(subjectIndex) {
         });
     });
 
-    // Обновляем график общих оценок
+    // ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ ГЈГ°Г ГґГЁГЄ Г®ГЎГ№ГЁГµ Г®Г¶ГҐГ­Г®ГЄ
     const allLabels = ['5', '4', '3', '2'];
     const allCounts = allLabels.map(label => countScores(allScores, parseInt(label)));
 
@@ -539,7 +539,7 @@ function updateGraphicStats(subjectIndex) {
         data: {
             labels: allLabels,
             datasets: [{
-                label: 'Распределение оценок',
+                label: 'ГђГ Г±ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ Г®Г¶ГҐГ­Г®ГЄ',
                 data: allCounts,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -564,14 +564,14 @@ function updateGraphicStats(subjectIndex) {
                 },
                 title: {
                     display: true,
-                    text: 'Распределение оценок'
+                    text: 'ГђГ Г±ГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ Г®Г¶ГҐГ­Г®ГЄ'
                 }
             }
         }
     });
 }
 
-// Привязываем изменение выпадающего списка к обновлению графиков
+// ГЏГ°ГЁГўГїГ§Г»ГўГ ГҐГ¬ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГҐ ГўГ»ГЇГ Г¤Г ГѕГ№ГҐГЈГ® Г±ГЇГЁГ±ГЄГ  ГЄ Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГѕ ГЈГ°Г ГґГЁГЄГ®Гў
 const graphicStatsSelect = document.querySelector('#graphic-stats select');
 graphicStatsSelect.addEventListener('change', () => {
     const subjectIndexMap = {
@@ -586,6 +586,6 @@ graphicStatsSelect.addEventListener('change', () => {
     if (subjectIndex !== undefined) {
         updateGraphicStats(subjectIndex);
     } else {
-        console.error('Неверный предмет:', graphicStatsSelect.value);
+        console.error('ГЌГҐГўГҐГ°Г­Г»Г© ГЇГ°ГҐГ¤Г¬ГҐГІ:', graphicStatsSelect.value);
     }
 });
